@@ -1,9 +1,22 @@
 import { Tabs } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+function TabBarIcon(props: {
+  name: React.ComponentProps<typeof FontAwesome>["name"];
+  color: string;
+}) {
+  return (
+    <FontAwesome
+      size={24}
+      style={{ marginBottom: -3, color: "#1BC464" }}
+      {...props}
+    />
+  );
+}
 const TabsLayout = () => {
   return (
-    <SafeAreaView style={styles.SafeArea}>
+    <SafeAreaView edges={["top"]} style={styles.SafeArea}>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: "#1BC464",
@@ -16,17 +29,27 @@ const TabsLayout = () => {
             borderTopRightRadius: 16,
             paddingTop: 0,
           },
-          //   headerShown: false,
+          headerShown: false,
         }}
       >
         <Tabs.Screen
           name="index"
           options={{
-            headerShown: false,
-            title: "index",
+            title: "shop",
+            tabBarIcon(props) {
+              return <TabBarIcon name="shopping-cart" {...props} />;
+            },
           }}
         />
-        <Tabs.Screen name="orders" options={{}} />
+        <Tabs.Screen
+          name="orders"
+          options={{
+            title: "orders",
+            tabBarIcon(props) {
+              return <TabBarIcon name="book" {...props} />;
+            },
+          }}
+        />
         {/* <Tabs.Screen name="/index" options={{}} />
       <Tabs.Screen name="/index" options={{}} />
       <Tabs.Screen name="/index" options={{}} /> */}
