@@ -1,5 +1,6 @@
 import { FlatList, StyleSheet, View, Text } from "react-native";
-import { PRODUCTS } from "../../../appassets/products";
+// import { PRODUCTS } from "../../../appassets/products";
+import { PRODUCTS } from "../../../assets/products";
 import React from "react";
 
 const Home = () => {
